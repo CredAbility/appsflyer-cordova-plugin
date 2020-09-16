@@ -88,5 +88,25 @@
         <framework src="iAd.framework" weak="true" />
         <framework src="Security.framework" weak="true" />
         <framework src="AppTrackingTransparency.framework" weak="true" />
+        <preference name="IOS_ASSOCIATED_DOMAIN1" />  
+        <preference name="IOS_ASSOCIATED_DOMAIN2" />   
+        <preference name="IOS_ASSOCIATED_DOMAIN3" />  
+        <preference name="IOS_ASSOCIATED_DOMAIN4" />   
+        <config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains"> 
+            <array> 
+                <string>$IOS_ASSOCIATED_DOMAIN1</string>
+                <string>$IOS_ASSOCIATED_DOMAIN2</string>  
+                <string>$IOS_ASSOCIATED_DOMAIN3</string>  
+                <string>$IOS_ASSOCIATED_DOMAIN4</string> 
+            </array> 
+        </config-file> 
+        <config-file target="*-Release.plist" parent="com.apple.developer.associated-domains"> 
+            <array> 
+                <string>$IOS_ASSOCIATED_DOMAIN1</string>
+                <string>$IOS_ASSOCIATED_DOMAIN2</string>  
+                <string>$IOS_ASSOCIATED_DOMAIN3</string>  
+                <string>$IOS_ASSOCIATED_DOMAIN4</string> 
+            </array> 
+        </config-file> 
     </platform>
 </plugin>
