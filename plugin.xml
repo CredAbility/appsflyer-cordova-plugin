@@ -87,7 +87,7 @@
         <framework src="AdSupport.framework" weak="true" />
         <framework src="iAd.framework" weak="true" />
         <framework src="Security.framework" weak="true" />
-        <framework src="AppTrackingTransparency.framework" weak="true" />
+
         <preference name="IOS_ASSOCIATED_DOMAIN1" />  
         <preference name="IOS_ASSOCIATED_DOMAIN2" />   
         <preference name="IOS_ASSOCIATED_DOMAIN3" />  
