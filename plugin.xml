@@ -75,6 +75,14 @@
                 <param name="ios-package" value="AppsFlyerPlugin" />
             </feature>
         </config-file>
+        <config-file target="*-Info.plist">
+          <dict>
+            <key>FirebaseAutomaticScreenReportingEnabled</key>
+            <false/>
+            <key>FirebaseScreenReportingEnabled</key>
+            <false/>         
+          </dict>
+        </config-file>
         <header-file src="src/ios/AppsFlyerPlugin.h" />
         <header-file src="src/ios/AppsFlyerLib.h" />
         <source-file src="src/ios/AppsFlyerPlugin.m" />
