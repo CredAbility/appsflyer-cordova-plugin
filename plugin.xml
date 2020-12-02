@@ -54,6 +54,15 @@
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/*/application">
+            <activity mode="merge">
+              <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="credtest.onelink.me" android:pathPrefix="/tPqO" />
+                <data android:scheme="https" android:host="credability.onelink.me" android:pathPrefix="/C8ui" />
+              </intent-filter>
+            </activity>
             <receiver android:name="com.appsflyer.MultipleInstallBroadcastReceiver" android:exported="true">
                 <intent-filter>
                     <action android:name="com.android.vending.INSTALL_REFERRER" />
