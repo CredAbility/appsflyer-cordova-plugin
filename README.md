@@ -5,6 +5,8 @@
 
 [![npm version](https://badge.fury.io/js/cordova-plugin-appsflyer-sdk.svg)](https://badge.fury.io/js/cordova-plugin-appsflyer-sdk)
 [![Build Status](https://travis-ci.org/AppsFlyerSDK/appsflyer-cordova-plugin.svg?branch=master)](https://travis-ci.org/AppsFlyerSDK/appsflyer-cordova-plugin)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) 
+[![Downloads](https://img.shields.io/npm/dm/cordova-plugin-appsflyer-sdk.svg)](https://www.npmjs.com/package/cordova-plugin-appsflyer-sdk)
 
 ----------
 **❗️Important** <br>
@@ -32,8 +34,8 @@ Cordova AppsFlyer plugin version **4.4.0** and higher are meant to be used with 
 
 ### <a id="plugin-build-for"> This plugin is built for
 
-- iOS AppsFlyerSDK **v6.0.3**
-- Android AppsFlyerSDK **v5.4.3**
+- iOS AppsFlyerSDK **v6.0.5**
+- Android AppsFlyerSDK **v5.4.4**
 
 ### <a id="breakingChanges"> ❗v6 Breaking Changes
 
@@ -42,7 +44,7 @@ We have renamed the following APIs:
 | Old API | New API |
 |---------|---------|
 |trackEvent      |  logEvent|
-|stopTracking      |  stop|
+|stopTracking      |  Stop|
 |trackCrossPromotionImpression |  logCrossPromotionImpression|
 |trackAndOpenStore      |  logCrossPromotionAndOpenStore|
 |setDeviceTrackingDisabled      |  anonymizeUser|
@@ -112,6 +114,8 @@ Check out the demo for this project [here](docs/Guides.md#demo).<br>
 There is 1 demo project called ```demoC```, run ```npm run setup_c``` in the appsflyer-cordova-plugin folder and then open the ios project in Xcode to see implementation for IOS 14.<br>
 Check out our Sample-App  **Let's cook!** [here](https://github.com/AppsFlyerSDK/appsflyer-cordova-app) if you want to implement our SDK inside React-Cordova app
 ## <a id="ionic"> 📍 Ionic
+***NOTICE!*** In AppsFlyer Cordova plugin version 6.x.x we replaced the word ``track`` with ``log`` from all our api but Ionic-Navite Appsflyer plugin still using ``track``<br>
+So the latest version that can work with Ionic-Native for now is **5.4.30**<br>
 
 In case you are using Ionic framework, you have 2 options:
 ### 1 - Using Ionic native plugin

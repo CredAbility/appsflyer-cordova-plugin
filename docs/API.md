@@ -20,7 +20,7 @@ The list of available methods for this plugin is described below.
 | [`setGCMProjectNumber`](#initSdk) | `(String gcmProjectNumber)` | |
 | [`getAppsFlyerUID`](#getAppsFlyerUID) | `(function success)` | Get AppsFlyer’s proprietary Device ID |
 | [`anonymizeUser`](#deviceTrackingDisabled) | `(Boolean isDisabled)` | Anonymize user data |
-| [`stop`](#stopTracking)| `(Boolean isStopTracking)` | Shut down all SDK tracking |
+| [`Stop`](#stopTracking)| `(Boolean isStopTracking)` | Shut down all SDK tracking |
 | [`updateServerUninstallToken`](#updateServerUninstallToken) | `(String token)` | (Android) Pass GCM/FCM Tokens |
 | [`registerUninstall`](#registerUninstall) | `(String token)` | (iOS) Pass APNs Tokens |
 | [`setAppInviteOneLinkID`](#setAppInviteOneLinkID) | `(Object args)` | Set AppsFlyer’s OneLink ID |
@@ -31,6 +31,12 @@ The list of available methods for this plugin is described below.
 | [`getSdkVersion`](#getSdkVersion) | `((function success)` | Get the current SDK version |
 | [`setSharingFilterForAllPartners`](#setSharingFilterForAllPartners) | | Used by advertisers to exclude all networks/integrated partners from getting data |
 | [`setSharingFilter`](#setSharingFilter) | `(partners)` | Used by advertisers to exclude specified networks/integrated partners from getting data |
+| [`validateAndLogInAppPurchase`](#validateAndLogInAppPurchase) | `(Object purchaseInfo, function success, function error)` | API for server verification of in-app purchases |
+| [`setUseReceiptValidationSandbox`](#setUseReceiptValidationSandbox) | `(boolean isSandbox, function success, function error)` | In app purchase receipt validation Apple environment |
+| [`disableCollectASA`](#disableCollectASA) | `(boolean collectASA, function success)` | **iOS**  - set the SDK to load OR not to load iAd.framework dynamically|
+| [`setDisableAdvertisingIdentifier`](#setDisableAdvertisingIdentifier) | `(boolean disableAdvertisingIdentifier, function success)` | **iOS** - set the SDK to load OR not to load adSupport.framework dynamically |
+| [`setOneLinkCustomDomains`](#setOneLinkCustomDomains) | `(domains, function success, function error)` | Set Onelink custom/branded domains |
+
   
 ---
 
@@ -164,16 +170,16 @@ window.plugins.appsFlyer.setAppUserId(userId);
 
 ---
 
-##### <a id="stopTracking"> **`stop(isStopTracking): void`**
+##### <a id="stopTracking"> **`Stop(isStopTracking): void`**
 
 | parameter | type | description |
 | ----------- |-----------------------------|--------------|
-| `stop` | `boolean` |In some extreme cases you might want to shut down all SDK tracking due to legal and privacy compliance. This can be achieved with the isStopTracking API. Once this API is invoked, our SDK will no longer communicate with our servers and stop functioning. |
+| `Stop` | `boolean` |In some extreme cases you might want to shut down all SDK tracking due to legal and privacy compliance. This can be achieved with the isStopTracking API. Once this API is invoked, our SDK will no longer communicate with our servers and stop functioning. |
 
 *Example:*
 
 ```javascript
-window.plugins.appsFlyer.stop(true);
+window.plugins.appsFlyer.Stop(true);
 ```
 
 In any event, the SDK can be reactivated by calling the same API, but to pass false.
@@ -404,6 +410,113 @@ window.plugins.appsFlyer.setSharingFilter(partners);
 | parameter | type | description |
 | ----------- |-----------------------------|--------------|
 | `partners` | `array` | Comma separated array of partners that need to be excluded |
+
+---
+
+##### <a id="validateAndLogInAppPurchase"> **`validateAndLogInAppPurchase(purchaseInfo, successC, failureC): void`**
+
+Receipt validation is a secure mechanism whereby the payment platform (e.g. Apple or Google) validates that an in-app purchase indeed occurred as reported. [Learn more here](https://support.appsflyer.com/hc/en-us/articles/207032106-Receipt-validation-for-in-app-purchases)
+
+*Example:*
+
+```javascript
+ purchaseInfo = {
+        productIdentifier: 'identifier', //iOS
+        transactionId: '12xxx56', //iOS
+        publicKey: "key",
+        currency: 'biz',
+        signature: "sig",
+        purchaseData: "data",
+        price: '123',
+        additionalParameters: {'foo': 'bar'},
+    };
+    window.plugins.appsFlyer.setUseReceiptValidationSandbox(true); // iOS -> for testing in sandbox environment
+    window.plugins.appsFlyer.validateAndLogInAppPurchase(purchaseInfo, successC, failureC);
+```
+
+| parameter | type | description |
+| ----------- |-----------------------------|--------------|
+| `purchaseInfo` | `Object` | In-App Purchase parameters |
+| `successC` | `function` | success callback |
+| `failureC` | `function` | failure callback |
+
+*Purchase parameters:*
+
+| parameter | type | description |
+| ----------- |-----------------------------|--------------|
+| `publicKey` | `string` | License Key obtained from the Google Play Console |
+| `signature` | `string` | data.INAPP_DATA_SIGNATURE |
+| `purchaseData` | `string` | data.INAPP_PURCHASE_DATA |
+| `price` | `string` | The product price |
+| `additionalParameters` | `Object` | The additional param, which you want to receive it in the raw reports. |
+| `productIdentifier` | `string` | The product identifier. *FOR iOS* |
+| `transactionId` | `string` | The purchase transaction Id. *FOR iOS* |
+| `currency` | `string` | The product currency |
+---
+
+##### <a id="setUseReceiptValidationSandbox"> **`setUseReceiptValidationSandbox(isSandbox, successC, failureC): void`**
+
+In app purchase receipt validation Apple environment(production or sandbox)<br>Callback functions are optional.
+
+*Example:*
+
+```javascript
+window.plugins.appsFlyer.setUseReceiptValidationSandbox(true);
+```
+
+| parameter | type | description |
+| ----------- |-----------------------------|--------------|
+| `isSandbox` | `boolean` | true if In app purchase is done with sandbox |
+
+---
+
+##### <a id="disableCollectASA"> **`disableCollectASA(collectASA, successC): void`**
+**iOS ONLY**<br>
+AppsFlyer SDK dynamically loads the Apple iAd.framework. This framework is required to record and measure the performance of Apple Search Ads in your app.<br>
+If you don't want AppsFlyer to dynamically load this framework, set this property to true.<br>
+*Example:*
+
+```javascript
+window.plugins.appsFlyer.disableCollectASA(true, successC);
+```
+
+| parameter | type | description |
+| ----------- |-----------------------------|--------------|
+| `collectASA` | `boolean` | If you don't want AppsFlyer to dynamically load iAd.framework, set this property to true |
+| `successC` | `function` | success callback |
+---
+##### <a id="setDisableAdvertisingIdentifier"> **`setDisableAdvertisingIdentifier(disableAdvertisingIdentifier, successC): void`**
+**iOS ONLY**<br>
+AppsFlyer SDK dynamically loads the Apple adSupport.framework. This framework is required to collect IDFA for attribution purposes.<br>
+If you don't want AppsFlyer to dynamically load this framework, set this property to true.<br>
+*Example:*
+
+```javascript
+window.plugins.appsFlyer.setDisableAdvertisingIdentifier(true, successC);
+```
+
+| parameter | type | description |
+| ----------- |-----------------------------|--------------|
+| `disableAdvertisingIdentifier` | `boolean` | If you don't want AppsFlyer to dynamically load adSupport.framework, set this property to true |
+| `successC` | `function` | success callback |
+---
+
+##### <a id="setOneLinkCustomDomains"> **`setOneLinkCustomDomains(domains, successC, errorC): void`**
+Set Onelink custom/branded domains<br>
+Use this API during the SDK Initialization to indicate branded domains. For more information [Learn here](https://support.appsflyer.com/hc/en-us/articles/360002329137-Implementing-Branded-Links)
+
+*Example:*
+
+```javascript
+let domains = ["promotion.greatapp.com", "click.greatapp.com", "deals.greatapp.com"];
+window.plugins.appsFlyer.setOneLinkCustomDomains(domains, successC, errorC);
+```
+
+| parameter | type | description |
+| ----------- |-----------------------------|--------------|
+| `domains` | `String array` | String array of branded domains |
+| `successC` | `function` | will trigger if the domains were sent successfully |
+| `errorC` | `function` | will trigger if an error occurred |
 
 ---
 

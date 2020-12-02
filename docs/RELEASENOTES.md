@@ -1,4 +1,48 @@
 # Release Notes
+### 6.0.54
+Release date **November 22, 2020**
+Release type: Major / Minor / **Hotfix**
+
+**Overview and Highlights:**
+
+- add afNoDomains constant for setOneLinkCustomDomains
+
+### 6.0.53
+Release date **November 17, 2020**
+Release type: Major / Minor / **Hotfix**
+
+**Overview and Highlights:**
+
+- setOneLinkCustomDomains api
+
+### 6.0.52
+Release date **October 26 2020**
+Release type: Major / Minor / **Hotfix**
+
+**Overview and Highlights:**
+
+- disableCollectASA api
+- disableAdvertisingIdentifier api
+
+### 6.0.51
+Release date **October 22 2020**
+Release type: Major / Minor / **Hotfix**
+
+**Overview and Highlights:**
+
+- Add missing import registerValidatorListener
+
+### 6.0.50
+Release date **October 18 2020**
+Release type: Major / Minor / **Hotfix**
+
+**Overview and Highlights:**
+
+- Install Referrer 2.1
+- In App Purchase Validation
+- Android SDk to 5.4.4
+- iOS SDK to 6.0.5
+
 ### 6.0.30
 Release date **September 6 2020**
 Release type: Major / **Minor** / Hotfix

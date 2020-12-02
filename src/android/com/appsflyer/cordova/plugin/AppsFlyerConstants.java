@@ -32,8 +32,9 @@ public class AppsFlyerConstants {
     final static String AF_ON_APP_OPEN_ATTRIBUTION ="onAppOpenAttribution";
     final static String AF_ON_INSTALL_CONVERSION_FAILURE ="onInstallConversionFailure";
     final static String AF_ON_INSTALL_CONVERSION_DATA_LOADED ="onInstallConversionDataLoaded";
+    final static String NO_DOMAINS = "no domains in the domains array";
 
-    
+
     final static String INVITE_FAIL = "Could not create invite link";
     final static String INVITE_CHANNEL = "channel";
     final static String INVITE_CAMPAIGN = "campaign";
@@ -42,4 +43,15 @@ public class AppsFlyerConstants {
     final static String INVITE_CUSTOMERID = "customerID";
     final static String INVITE_DEEPLINK = "baseDeepLink";
     final static String PROMOTE_ID = "promotedAppId";
+
+    //RECEIPT VALIDATION
+    final static String PUBLIC_KEY = "publicKey";
+    final static String SIGNATURE = "signature";
+    final static String PURCHASE_DATA = "purchaseData";
+    final static String PRICE = "price";
+    final static String CURRENCY = "currency";
+    final static String ADDITIONAL_PARAMETERS = "additionalParameters";
+    final static String NO_PARAMETERS_ERROR = "Please provide purchase parameters";
+    final static String VALIDATE_SUCCESS = "In-App Purchase Validation success";
+    final static String VALIDATE_FAILED = "In-App Purchase Validation failed with error: ";
 }

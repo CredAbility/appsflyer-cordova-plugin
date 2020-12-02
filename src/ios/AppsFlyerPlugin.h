@@ -23,6 +23,7 @@
 - (void)logCrossPromotionAndOpenStore:(CDVInvokedUrlCommand *)command;
 - (void)registerOnAppOpenAttribution:(CDVInvokedUrlCommand *)command;
 - (void)getSdkVersion:(CDVInvokedUrlCommand *)command;
+- (void)setOneLinkCustomDomains:(CDVInvokedUrlCommand *)command;
 @end
 
 
@@ -53,3 +54,15 @@
 #define afOnAppOpenAttribution          @"onAppOpenAttribution"
 #define afOnInstallConversionFailure    @"onInstallConversionFailure"
 #define afOnInstallConversionDataLoaded @"onInstallConversionDataLoaded"
+
+//RECEIPT VALIDATION
+#define afProductIdentifier                       @"productIdentifier"
+#define afTransactionId                     @"transactionId"
+#define afPrice                    @"price"
+#define afCurrency                    @"currency"
+#define afAdditionalParameters                  @"additionalParameters"
+static NSString *const NO_PARAMETERS_ERROR                  = @"No purchase parameters found";
+static NSString *const VALIDATE_SUCCESS                  = @"In-App Purchase Validation success";
+
+//Set custom domains
+#define afNoDomains @"no domains in the domains array"
