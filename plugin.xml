@@ -87,6 +87,6 @@
         <framework src="AdSupport.framework" weak="true" />
         <framework src="iAd.framework" weak="true" />
         <framework src="Security.framework" weak="true" />
-        <framework src="AppTrackingTransparency.framework" weak="true" />
+        <!-- <framework src="AppTrackingTransparency.framework" weak="true" /> -->
     </platform>
 </plugin>
