@@ -129,9 +129,9 @@ public class AppsFlyerPlugin extends CordovaPlugin {
      */
     private boolean registerOnAppOpenAttribution(final CallbackContext callbackContext) {
 
-        if (mAttributionDataListener == null) {
+        //if (mAttributionDataListener == null) {
             mAttributionDataListener = callbackContext;
-        }
+        //}
 
         return true;
     }
